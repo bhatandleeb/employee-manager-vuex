@@ -42,7 +42,7 @@ export default new Vuex.Store({
             } else {
                 employeeDataArr = new Array();
             }
-            employeeDataArr.push(employeeData);
+            employeeDataArr.unshift(employeeData);
             // save to local storage
             localStorage.setItem("employee_data", JSON.stringify(employeeDataArr));
         },

@@ -145,12 +145,11 @@ export default {
     getParticulaData() {
       let empId = this.$route.params.id;
       let data = this.$store.state.employees;
-      console.log("data---", this.employee);
       this.employee = data.find((element) => element.id == empId);
-      console.log("result---", this.employee);
     },
     resetForm() {
       if (this.isEdit) {
+        this.$store.commit("LOAD_EMPLOYEES");
         this.getParticulaData();
         return;
       }
@@ -218,7 +217,7 @@ export default {
         const formData = new FormData(form); // get all named inputs in form
         let empId = this.$route.params.id;
         for (const [key, value] of formData) {
-          newData["id"] = empId; // generate unique id & add to obj
+          newData["id"] = empId; // set id
           newData[key] = value.trim(); // trim spaces
         }
         this.$store.dispatch("EDIT_EMPLOYEE", newData);

@@ -15,8 +15,5 @@ Vue.use(KeenUI)
 new Vue({
   router,
   store: store,
-  beforeCreate() {
-    this.$store.commit('LOAD_EMPLOYEES');
-  },
   render: h => h(App)
 }).$mount('#app')

@@ -87,20 +87,22 @@ export default {
       selectedId: null,
     };
   },
+  created() {
+    this.$store.commit("LOAD_EMPLOYEES");
+  },
   mounted() {
     // Accessing the Vuex state
     this.employeeList = this.$store.getters.getEmployee;
   },
   methods: {
     showConfirm(ref, id) {
-      this.selectedId = id; // get & set selected employee id
+      // get & set selected employee id
+      this.selectedId = id;
       this.$refs[ref].open();
     },
     onConfirmDelete() {
-      //get selected id
-      let employeeId = this.selectedId;
       //delete data
-      this.$store.dispatch("REMOVE_EMPLOYEE", employeeId);
+      this.$store.dispatch("REMOVE_EMPLOYEE", this.selectedId);
       //create snackbar on delete
       this.$refs.snackbarContainer.createSnackbar({
         message: "Employee details deleted successfully!",
