@@ -23,14 +23,11 @@ export default new Vuex.Store({
             }
         },
         DELETE_EMPLOYEE(state, empId) {
-            let employeeData = state.employees;
-            for (let i = 0; i < employeeData.length; i++) {
-                if (employeeData[i].id == empId) {
-                    employeeData.splice(i, 1);
-                    localStorage.setItem(
-                        "employee_data",
-                        JSON.stringify(employeeData)
-                    );
+            let employeeDataArr = state.employees;
+            for (let i = 0; i < employeeDataArr.length; i++) {
+                if (employeeDataArr[i].id == empId) {
+                    employeeDataArr.splice(i, 1);
+                    localStorage.setItem("employee_data", JSON.stringify(employeeDataArr));
                 }
             }
         },
@@ -52,10 +49,8 @@ export default new Vuex.Store({
             for (let i = 0; i < employeeDataArr.length; i++) {
                 if (employeeDataArr[i].id == employeeId) {
                     employeeDataArr.splice(i, 1, newData);
-                    localStorage.setItem(
-                        "employee_data",
-                        JSON.stringify(employeeDataArr)
-                    );
+                    // update to local storage
+                    localStorage.setItem("employee_data", JSON.stringify(employeeDataArr));
                 }
             }
         },

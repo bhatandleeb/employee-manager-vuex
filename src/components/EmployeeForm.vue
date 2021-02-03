@@ -122,7 +122,7 @@ export default {
   },
   mounted() {
     if (this.isEdit) {
-      this.getParticulaData();
+      this.getParticularData();
     }
   },
   methods: {
@@ -142,7 +142,7 @@ export default {
       let uuid = Math.floor(Math.random() * Date.now());
       return uuid * 100;
     },
-    getParticulaData() {
+    getParticularData() {
       let empId = this.$route.params.id;
       let data = this.$store.state.employees;
       this.employee = data.find((element) => element.id == empId);
@@ -150,7 +150,7 @@ export default {
     resetForm() {
       if (this.isEdit) {
         this.$store.commit("LOAD_EMPLOYEES");
-        this.getParticulaData();
+        this.getParticularData();
         return;
       }
       //reset form
